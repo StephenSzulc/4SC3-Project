@@ -89,13 +89,16 @@ void OnRxDone( uint8_t *payload, uint16_t size, int16_t rssi, int8_t snr )
     rxpacket[size]='\0';
     turnOnRGB(COLOR_RECEIVED,0);
     Radio.Sleep( );
+	
+//decodes information from char to int
     int node = rxpacket[0] - '0';
     int nodestatus = rxpacket[1] - '0';
     Serial.println(rxpacket);
+
+//changes status of nodes based on their status value
     if(node == 1){
       if((nodestatus ==1)&&(node == 1)){
         digitalWrite(node1, HIGH);
-        Serial.println("fuckyou");
       } else{
         digitalWrite(node1, LOW);
       }
