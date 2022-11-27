@@ -77,8 +77,12 @@ void loop()
   long duration;
   int distance;
   delay(100);
+  
+  
   int fbutton;
   int buttonstate = 0;
+  
+  //detects object distance
   digitalWrite(trigPin,LOW);
   delayMicroseconds(2);
   digitalWrite(trigPin, HIGH);
@@ -89,6 +93,8 @@ void loop()
   Serial.println(duration);
   fbutton = distance;
   Serial.println(fbutton);
+  
+  //sends a package if the status changes to true
   if((fbutton <=50)&&(counter == 0)){
     sprintf(txpacket,"%s","11");
     counter = 1;
@@ -97,7 +103,7 @@ void loop()
 
   Serial.printf("\r\nsending packet \"%s\" , length %d\r\n",txpacket, strlen(txpacket), "button is high");
 
-   
+   //sends packet if status changes to false
   } else if ((fbutton > 50) &&(counter ==1)){
     counter = 0;
     sprintf(txpacket,"%s","10");
