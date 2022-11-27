@@ -108,7 +108,7 @@ void loop()
     counter = 0;
     sprintf(txpacket,"%s","10");
     Radio.Send( (uint8_t *)txpacket, strlen(txpacket) ); //send the package out
-    Serial.printf("\r\nsending packet \"%s\" , length %d\r\n",txpacket, strlen(txpacket), "button is high");
+    Serial.printf("\r\nsending packet \"%s\" , length %d\r\n",txpacket, strlen(txpacket), "button is low");
   }
   
 }
